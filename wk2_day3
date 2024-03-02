@@ -1,0 +1,49 @@
+def display_menu():
+    print("\nShopping Cart Menu:")
+    print("1. Add item")
+    print("2. Delete item")
+    print("3. View cart")
+    print("4. Quit")
+
+def add_item(cart):
+    item = input("Enter the item to add: ")
+    cart.append(item)
+    print(item, "added to cart.")
+
+def delete_item(cart):
+    item = input("Enter the item to delete: ")
+    if item in cart:
+        cart.remove(item)
+        print(item, "removed from cart.")
+    else:
+        print(item, "not found in cart.")
+
+def view_cart(cart):
+    print("\nYour Shopping Cart:")
+    if not cart:
+        print("Empty")
+    else:
+        for item in cart:
+            print("-", item)
+
+def main():
+    cart = []
+    while True:
+        display_menu()
+        choice = input("Enter your choice (1-4): ")
+        if choice == '1':
+            add_item(cart)
+        elif choice == '2':
+            delete_item(cart)
+        elif choice == '3':
+            view_cart(cart)
+        elif choice == '4':
+            print("\nItems in your cart:")
+            view_cart(cart)
+            print("Exiting program. Goodbye!")
+            break
+        else:
+            print("Invalid choice. Please enter a number between 1 and 4.")
+
+if __name__ == "__main__":
+    main()
